@@ -14,8 +14,8 @@ int knapsack(int W[], int val[], int n, int cap) {
    return dp[n][cap];
    }
    else{
-    if(cap >= W[n]){ // it means still there is space to store product into the sack
-    return dp[n][cap] = max((val[n]+knapsack(W, val, n, cap-W[n])), knapsack(W, val, n - 1, cap));
+    if(cap >= W[n]){ // it means still there is space to store product into the sack & here n - 1 means product is taken in first call and product will be not taken in 2nd call
+    return dp[n][cap] = max((val[n]+knapsack(W, val, n - 1, cap-W[n])), knapsack(W, val, n - 1, cap));
     }
     else{ // There is no capacity left to store , for that -1
         return dp[n][cap] = knapsack(W, val, n - 1, cap);
