@@ -21,7 +21,6 @@ void mergeAllIncreasing(int a[], int p, int q, int r){
      i = 0;
      j = 0;
 
-
      for(k = p; k<= r;k++){
         if(L[i]<= R[j]){
         a[k] = L[i];
@@ -33,8 +32,6 @@ void mergeAllIncreasing(int a[], int p, int q, int r){
     }
 }
 }
-
-
 
 void mergeSortIncreasing(int a[], int p, int r){
     if(p<r){
@@ -65,7 +62,6 @@ void mergeAllDecreasing(int a[], int p, int q, int r){
      i = 0;
      j = 0;
 
-
      for(k = p; k<= r;k++){
         if(L[i]>= R[j]){  
         a[k] = L[i];
@@ -77,8 +73,6 @@ void mergeAllDecreasing(int a[], int p, int q, int r){
     }
 }
 }
-
-
 
 void mergeSortDecreasing(int a[], int p, int r){
     if(p<r){
@@ -99,7 +93,6 @@ int main(){
     for(int i = 0 ; i<= r;i++){
         cout << v[i] << "  ";
     }
-
 
    mergeSortDecreasing(v,p,r);
    cout << "\nMerge sort in decreasing order : ";

@@ -34,7 +34,7 @@ int knapsack(int weight[], int value[], int cap, int numofitems) {
                 }
             }
             else {  // weight[i] > j  it is not possible as if w[i] = 3 , i = 3, j = 2 , for l1 = dp[2][-1] , which is not possible , so else conition
-                dp[i][j] = dp[i - 1][j];
+                dp[i][j] = dp[i - 1][j]; 
                 tb[i][j] = 0;
             }
         }

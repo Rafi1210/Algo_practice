@@ -1,44 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int dp[1001][1001];
+
+int ways(int amount, int coins[], int n) {
+    for (int i = 0; i <= n; ++i) {
+        for (int j = 0; j <= amount; ++j) {
+            if (j == 0) {
+                dp[i][j] = 1;
+            } else if (i == 0) {
+                dp[i][j] = 0;
+            } else {
+                dp[i][j] = dp[i - 1][j];
+                if (coins[i - 1] <= j) {
+                    dp[i][j] += dp[i][j - coins[i - 1]];
+                }
+            }
+        }
+    }
+    return dp[n][amount];
+}
+
 int main() {
-    int n, k;
-    cin >> n >> k;
-
-    vector<pair<int, int>> contests;
-
-    for (int i = 0; i < n; i++) {
-        int luck, importance;
-        cin >> luck >> importance;
-        contests.push_back({luck, importance});
-    }
-
-    vector<int> importantLuck;
-
-    int luckBalance = 0;
-
-    for (const auto& contest : contests) {
-        int luck = contest.first;
-        int importance = contest.second;
-
-        if (importance == 1) {
-            importantLuck.push_back(luck);
-        } else {
-            luckBalance += luck;
-        }
-    }
-
-    sort(importantLuck.begin(), importantLuck.end());
-
-    for (int i = 0; i < importantLuck.size(); i++) {
-        if (i < importantLuck.size() - k) {
-            luckBalance -= importantLuck[i]; // Lose the most luck-intensive contests
-        } else {
-            luckBalance += importantLuck[i]; // Win the remaining important contests
-        }
-    }
-
-    cout << luckBalance << endl;
-
+    int amount = 5;
+    int coins[] = {1,2,5};
+    int n = sizeof(coins) / sizeof(coins[0]);
+    int ans = ways(amount, coins, n);
+    cout << ans << endl;
     return 0;
 }
