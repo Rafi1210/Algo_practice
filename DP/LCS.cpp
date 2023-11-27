@@ -1,3 +1,5 @@
+//iterative dp 
+
 #include <bits/stdc++.h>
 using namespace std;
 int dp[101][101];
@@ -43,29 +45,19 @@ int lcs(char x[], char y[], int n, int m) {
 }
 
 int main() {
-    char x[100];
-    int n, m;
-    cout << "X: ";
+    char x[100], y[100];
+    int n,m ;
+    cout << "X : " ;
     cin >> x;
+    cout << "\nY : ";
+    cin >> y;
     n = strlen(x);
-	char y[n];
-    m = n;
-    for(int i = 0, j = n-1;j>=0;i++,j--){
-		y[i] = x[j];
-    }
-     cout << "\nY: ";
-    for(int i = 0 ; i  < n ;i++){
-		cout << y[i] << " ";
-    }
+    m = strlen(y);
 
-    memset(dp, 0, sizeof(dp));
-    int len = lcs(x, y, n, m);
-    int minChar = n - len;
-
-    cout << "Length of LONGEST PALINDROMIC SUB-SEQUENCE : " << len << endl;
-    cout << "LPS: ";
-    traceback(x, y, n, m);
-    cout << "\nMinimum character need to insert to make X Palindrome : " << minChar;
-
+ memset(dp, -1, sizeof(dp));
+ int len = lcs(x,y,n,m);
+ cout << "Length of Iterative LCS : " << len << endl;
+ cout  << "LCS : ";
+ traceback(x,y,n,m);
     return 0;
 }

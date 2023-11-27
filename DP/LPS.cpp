@@ -60,12 +60,10 @@ int main() {
 
     memset(dp, 0, sizeof(dp));
     int len = lcs(x, y, n, m);
-    int minChar = n - len;
 
     cout << "Length of LONGEST PALINDROMIC SUB-SEQUENCE : " << len << endl;
     cout << "LPS: ";
     traceback(x, y, n, m);
-    cout << "\nMinimum character need to insert to make X Palindrome : " << minChar;
 
     return 0;
 }

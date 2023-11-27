@@ -13,12 +13,14 @@ void minCoins(int amount) {
             coinCount[i]++;
         }
     }
-
+int ans = 0;
     // Output the result
     cout << "Number of coins used:\n";
     for (int i = 0; i < coins.size(); ++i) {
         cout << coins[i] << " cents: " << coinCount[i] << " coins\n";
+        ans = ans+ coinCount[i];
     }
+    cout <<"Total coins used : "<< ans << endl;
 }
 
 int main() {

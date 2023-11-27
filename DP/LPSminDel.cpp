@@ -65,7 +65,7 @@ int main() {
     cout << "Length of LONGEST PALINDROMIC SUB-SEQUENCE : " << len << endl;
     cout << "LPS: ";
     traceback(x, y, n, m);
-    cout << "\nMinimum character need to insert to make X Palindrome : " << minChar;
+    cout << "\nMinimum character need to delete to make X Palindrome : " << minChar;
 
     return 0;
 }
