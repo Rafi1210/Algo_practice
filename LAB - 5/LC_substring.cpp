@@ -18,7 +18,6 @@ void traceback(char x[], char y[], int n, int m) {
 }
 
 int lc_substring(char x[], char y[], int n, int m) {
-    int maxLength = 0; 
 
     for (int i = 0; i <= n; ++i) {
         for (int j = 0; j <= m; ++j) {
@@ -27,23 +26,14 @@ int lc_substring(char x[], char y[], int n, int m) {
             } else if (x[i - 1] == y[j - 1]) {
                 dp[i][j] = 1 + dp[i - 1][j - 1];
                 trace[i][j] = 1;
-                if (dp[i][j] > maxLength) {
-                    maxLength = dp[i][j];
-                }
-            } else {
-                int l1 = dp[i][j - 1];
-                int l2 = dp[i - 1][j];
-                if (l1 >= l2) {
-                    dp[i][j] = l1;
-                    trace[i][j] = 2;
-                } else {
-                    dp[i][j] = l2;
-                    trace[i][j] = 3;
-                }
+            }
+             else {
+                dp[i][j] = 0;
+                trace[i][j] = 0;
             }
         }
     }
-    return maxLength;
+    return dp[n][m];
 }
 
 int main() {
